@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         // mViewPager.setAdapter(mSectionsPagerAdapter);
-        mSectionsPagerAdapter.addfra(new Home(), "Plant Scan");
-        mSectionsPagerAdapter.addfra(new Two(), "Soil Scan");
+        mSectionsPagerAdapter.addfra(new Home(), "Soil Scan");
+        mSectionsPagerAdapter.addfra(new Two(), "Plant Scan");
         mSectionsPagerAdapter.addfra(new Three(), "News");
         mSectionsPagerAdapter.addfra(new Four(), "e-Mandi");
         mViewPager.setAdapter(mSectionsPagerAdapter);

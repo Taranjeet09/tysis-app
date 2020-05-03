@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
+
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -31,7 +34,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class Two extends Fragment {
     public static final String TAG = MainActivity.class.getSimpleName();
-    public static final String URL = "https://7b412b70.ngrok.io";
+    public static final String URL = "https://317f2ae8.ngrok.io"; //"https://covidhack.in:8181";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final int INTENT_REQUEST_CODE = 100;
@@ -43,6 +46,7 @@ public class Two extends Fragment {
     private Button mBtImageShow;
     private ProgressBar mProgressBar;
     private String mImageUrl = "";
+    private TextView tv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,7 +79,6 @@ public class Two extends Fragment {
             startActivity(intent);
 
         });*/
-
     }
 
     @Override
@@ -138,6 +141,7 @@ public class Two extends Fragment {
                     Response responseBody = response.body();
                     //mBtImageShow.setVisibility(View.VISIBLE);
                     mImageUrl = URL + responseBody.getPath();
+                    tv.setText(responseBody.getMessage());
                     Snackbar.make(getView().findViewById(R.id.content), responseBody.getMessage(), Snackbar.LENGTH_SHORT).show();
 
                 } else {
@@ -174,6 +178,7 @@ public class Two extends Fragment {
         Button mBtImageSelect = view.findViewById(R.id.btn_select_image);
         Button mBtImageShow = view.findViewById(R.id.btn_show_image);
         ProgressBar mProgressBar = view.findViewById(R.id.progress);
+        tv = view.findViewById(R.id.textView);
         mBtImageSelect.setOnClickListener((View view) -> {
 
             mBtImageShow.setVisibility(View.GONE);
