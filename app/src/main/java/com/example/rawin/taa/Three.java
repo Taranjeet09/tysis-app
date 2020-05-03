@@ -1,13 +1,10 @@
 package com.example.rawin.taa;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 
 public class Three extends Fragment {
@@ -24,7 +21,6 @@ public class Three extends Fragment {
     public Three() {
         // Required empty public constructor
     }
-
 
 
     @Override

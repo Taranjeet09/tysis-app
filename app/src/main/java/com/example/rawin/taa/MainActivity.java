@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 
+    static FloatingActionButton b;
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
-  static FloatingActionButton b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +27,21 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-         b=findViewById(R.id.fab);
+        b = findViewById(R.id.fab);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager = (ViewPager) findViewById(R.id.container);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         // mViewPager.setAdapter(mSectionsPagerAdapter);
-        mSectionsPagerAdapter.addfra(new Home(),"Home");
-      mSectionsPagerAdapter.addfra(new Two(),"Two");
-        mSectionsPagerAdapter.addfra(new Three(),"Three");
-        mSectionsPagerAdapter.addfra(new Four(),"Four");
+        mSectionsPagerAdapter.addfra(new Home(), "Plant Scan");
+        mSectionsPagerAdapter.addfra(new Two(), "Soil Scan");
+        mSectionsPagerAdapter.addfra(new Three(), "News");
+        mSectionsPagerAdapter.addfra(new Four(), "e-Mandi");
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout.setupWithViewPager(mViewPager);
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -48,17 +49,16 @@ public class MainActivity extends AppCompatActivity {
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        ArrayList<Fragment> frag=new ArrayList<>();
-        ArrayList<String> tabti=new ArrayList<>();
-
-        public void addfra(Fragment frag,String title)
-        {
-            this.frag.add(frag);
-            this.tabti.add(title);
-        }
+        ArrayList<Fragment> frag = new ArrayList<>();
+        ArrayList<String> tabti = new ArrayList<>();
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+        }
+
+        public void addfra(Fragment frag, String title) {
+            this.frag.add(frag);
+            this.tabti.add(title);
         }
 
         @Override

@@ -30,20 +30,15 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class Two extends Fragment {
+    public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String URL = "https://7b412b70.ngrok.io";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final int INTENT_REQUEST_CODE = 100;
+    public View view;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-  public View view;
-
-    public static final String TAG = MainActivity.class.getSimpleName();
-
-    private static final int INTENT_REQUEST_CODE = 100;
-
-    public static final String URL = "https://7b412b70.ngrok.io";
-
     private Button mBtImageSelect;
     private Button mBtImageShow;
     private ProgressBar mProgressBar;
@@ -54,7 +49,7 @@ public class Two extends Fragment {
         super.onCreate(savedInstanceState);
         //getActivity().setContentView(R.layout.fragment_two);
         final Fragment frag = this;
-      //  frag.startActivityForResult(intent, 111);
+        //  frag.startActivityForResult(intent, 111);
 
         // Toolbar toolbar = getView().findViewById(R.id.toolbar);
         //getView().setSupportActionBar(toolbar);
@@ -143,7 +138,7 @@ public class Two extends Fragment {
                     Response responseBody = response.body();
                     //mBtImageShow.setVisibility(View.VISIBLE);
                     mImageUrl = URL + responseBody.getPath();
-                    Snackbar.make(getView().findViewById(R.id.content), responseBody.getMessage(),Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(getView().findViewById(R.id.content), responseBody.getMessage(), Snackbar.LENGTH_SHORT).show();
 
                 } else {
 
@@ -154,7 +149,7 @@ public class Two extends Fragment {
                     try {
 
                         Response errorResponse = gson.fromJson(errorBody.string(), Response.class);
-                        Snackbar.make(getView().findViewById(R.id.content), errorResponse.getMessage(),Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(getView().findViewById(R.id.content), errorResponse.getMessage(), Snackbar.LENGTH_SHORT).show();
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -166,7 +161,7 @@ public class Two extends Fragment {
             public void onFailure(Call<Response> call, Throwable t) {
 
                 //mProgressBar.setVisibility(View.GONE);
-                Log.d(TAG, "onFailure: "+t.getLocalizedMessage());
+                Log.d(TAG, "onFailure: " + t.getLocalizedMessage());
             }
         });
     }
@@ -174,11 +169,11 @@ public class Two extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         view=inflater.inflate(R.layout.content_two, container, false);
+        view = inflater.inflate(R.layout.content_two, container, false);
         final Fragment frag = this;
-        Button mBtImageSelect=view.findViewById(R.id.btn_select_image);
-        Button mBtImageShow=view.findViewById(R.id.btn_show_image);
-        ProgressBar mProgressBar=view.findViewById(R.id.progress);
+        Button mBtImageSelect = view.findViewById(R.id.btn_select_image);
+        Button mBtImageShow = view.findViewById(R.id.btn_show_image);
+        ProgressBar mProgressBar = view.findViewById(R.id.progress);
         mBtImageSelect.setOnClickListener((View view) -> {
 
             mBtImageShow.setVisibility(View.GONE);
