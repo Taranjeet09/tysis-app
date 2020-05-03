@@ -42,7 +42,7 @@ public class Two extends Fragment {
 
     private static final int INTENT_REQUEST_CODE = 100;
 
-    public static final String URL = "http://7b412b70.ngrok.io";
+    public static final String URL = "https://7b412b70.ngrok.io";
 
     private Button mBtImageSelect;
     private Button mBtImageShow;
@@ -131,17 +131,17 @@ public class Two extends Fragment {
 
         MultipartBody.Part body = MultipartBody.Part.createFormData("image", "image.jpg", requestFile);
         Call<Response> call = retrofitInterface.uploadImage(body);
-        mProgressBar.setVisibility(View.VISIBLE);
+        //mProgressBar.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
 
-                mProgressBar.setVisibility(View.GONE);
+                //mProgressBar.setVisibility(View.GONE);
 
                 if (response.isSuccessful()) {
 
                     Response responseBody = response.body();
-                    mBtImageShow.setVisibility(View.VISIBLE);
+                    //mBtImageShow.setVisibility(View.VISIBLE);
                     mImageUrl = URL + responseBody.getPath();
                     Snackbar.make(getView().findViewById(R.id.content), responseBody.getMessage(),Snackbar.LENGTH_SHORT).show();
 
@@ -165,7 +165,7 @@ public class Two extends Fragment {
             @Override
             public void onFailure(Call<Response> call, Throwable t) {
 
-                mProgressBar.setVisibility(View.GONE);
+                //mProgressBar.setVisibility(View.GONE);
                 Log.d(TAG, "onFailure: "+t.getLocalizedMessage());
             }
         });
